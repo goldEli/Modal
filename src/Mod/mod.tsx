@@ -26,7 +26,10 @@ const Mod = React.forwardRef<IModHandle, IModProps>((props, ref) => {
 
   const onOk = async () => {
     if (typeof props.onOk === "function") {
-      props?.onOk?.() && close();
+      const ret = await props?.onOk?.();
+      if (ret) {
+        close();
+      }
     } else {
       close();
     }
