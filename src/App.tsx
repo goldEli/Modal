@@ -1,17 +1,35 @@
 import * as React from "react";
 import "./styles.css";
 import { Button } from "antd";
-import Mod, { useMod } from "./Mod";
+import Mod, { useModRef } from "./Mod";
 
 export default function App() {
-  const modal = useMod();
+  const modalRef = useModRef();
+  const modalRef1 = useModRef();
   const handleClick = () => {
-    console.log(modal);
-    modal?.current?.open?.();
+    modalRef?.current?.open();
+  };
+  const handleClick1 = () => {
+    modalRef1?.current?.open();
   };
   return (
     <div className="App">
-      <Button onClick={handleClick}>click</Button>
+      <Button onClick={handleClick}>first</Button>
+      <Mod
+        onCancel={() => {
+          return new Promise((resolve, reject) => {
+            setTimeout(() => {
+              resolve(true);
+            }, 3000);
+          });
+        }}
+        onOk={() => {
+          return true;
+        }}
+        ref={modalRef1}
+      >
+        <h1>second</h1>
+      </Mod>
       <Mod
         onCancel={() => {
           return new Promise((resolve, reject) => {
@@ -24,9 +42,9 @@ export default function App() {
         onOk={() => {
           return true;
         }}
-        ref={modal}
+        ref={modalRef}
       >
-        <h1>hello world</h1>
+        <Button onClick={handleClick1}>second</Button>
       </Mod>
     </div>
   );

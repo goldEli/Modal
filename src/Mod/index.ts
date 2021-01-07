@@ -1,6 +1,6 @@
 import Mod from "./mod";
-import useMod from "./useMod";
+import useModRef from "./useModRef";
 
-export { useMod };
+export { useModRef };
 
 export default Mod;
