@@ -6,7 +6,8 @@ import Mod, { useMod } from "./Mod";
 export default function App() {
   const modal = useMod();
   const handleClick = () => {
-    modal?.current?.open();
+    console.log(modal);
+    modal?.current?.open?.();
   };
   return (
     <div className="App">

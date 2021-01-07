@@ -45,7 +45,6 @@ const Mod = React.forwardRef<IModHandle, IModProps>((props, ref) => {
       close();
     }
   };
-
   return (
     <>
       <Modal
