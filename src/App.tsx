@@ -2,6 +2,7 @@ import * as React from "react";
 import "./styles.css";
 import { Button } from "antd";
 import Mod, { useModRef } from "./Mod";
+import AMWithStyle from "./AMWithStyle";
 
 export default function App() {
   const modalRef = useModRef();
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <div className="App">
       <Button onClick={handleClick}>first</Button>
+      <AMWithStyle visible={false}>hello</AMWithStyle>
       <Mod
         onCancel={() => {
           return new Promise((resolve, reject) => {
